@@ -1,4 +1,3 @@
 # Proj-Zesp-PK
 Projekt zespołowy
-Zespol projektowy sk
-da sie z 5 osób 
+Zespol projektowy sklda sie z 5 osób 
