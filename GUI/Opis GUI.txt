@@ -1,0 +1,6 @@
+Wygl¹d aplikacji jest dostosowany do d³ugiej pracy biurowej.
+Wygl¹d okien i dobranie kolorów nie mêczy oczu u¿ytkownika.
+Aplikacja nie posiada trybu dla daltonistów.
+Kolory okien s¹ stonowane tak aby po d³ugiej pracy nie by³o efektu zmêczenia oczu, bólów g³owy oraz zawrotów.
+Okna s¹ stworzone w oparciu o intuicyjnoœæ i ³atwoœæ w obs³udze.
+Okna w aplikacji s¹ stworzone dla osób widcz¹cych poprawnie.
