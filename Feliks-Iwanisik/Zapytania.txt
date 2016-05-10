@@ -1,0 +1,50 @@
+Zapytania Projekt Zespołowy
+
+1. Wyświetlanie wszystkich rezerwacji.
+	SELECT klienci.imie, klienci.nazwisko, klienci.miejscowosc, klienci.ulica ,klienci.kod_pocztowy, klienci.telefon, rezerwacje.data_roz, rezerwacje.data_zak,rezerwacje.status, pokoje.nazwa, pokoje.ilosc_pokoi, pokoje.cena, uwagi.uwaga 
+	FROM klienci, rezerwacje, pokoje, uwagi WHERE klienci.id_klienta=rezerwacje.id_klienta AND rezerwacje.id_rezerwacji=pokoje.id_rezerwacji AND rezerwacje.id_rezerwacji=uwagi.id_rezerwacji AND pokoje.id_pokoju=uwagi.id_pokoju
+	
+2. Wyświetlanie wszystkich pracowników.
+	SELECT * FROM pracownicy	
+	
+3. Wyświetlanie wszystkich pracowników po stanowiskach
+	SELECT * FROM pracownicy WHERE stanowisko="..."
+	
+4. Wyświetlanie wszystkich pracowników alfabetycznie po imionach
+	SELECT * FROM pracownicy ORDER BY imie
+
+5. Wyświetlanie wolnych pokoi
+	SELECT pokoje.nazwa, pokoje.ilosc_pokoi, pokoje.cena FROM pokoje, rezerwacje WHERE rezerwacje.status="wolne" AND rezerwacje.id_rezerwacji=pokoje.id_rezerwacji
+	
+6. Wyświetlanie wszystkich użytkowników (to wgl trzeba dodać)
+	SELECT * FROM users
+	
+7. Wyświetlanie uwag.
+	SELECT pokoje.nazwa,pracownicy.imie, pracownicy.nazwisko, uwagi.status, uwagi.uwaga FROM pracownicy, pokoje, uwagi WHERE pracownicy.id_pracownika=uwagi.id_pracownika AND uwagi.id_pokoju=pokoje.id_pokoju
+	
+8. Wyświetlanie rezerwacji po imieniu/nazwisku
+	Select klienci.imie, klienci.nazwisko, rezerwacje.data_roz,rezerwacje.data_zak FROM klienci,rezerwacje WHERE imie/nazwisko="..." AND klienci.id_klienta=rezerwacje.id_klienta
+	
+9. Wyświetlanie rezerwacji po dacie	
+	Select klienci.imie, klienci.nazwisko, rezerwacje.data_roz,rezerwacje.data_zak FROM klienci,rezerwacje WHERE data_roz/data_zako="..." AND klienci.id_klienta=rezerwacje.id_klienta
+	
+10. Wyświetlanie pracowników po zakładce wyszukaj pracownika.
+	SELECT pracownicy.imie, pracownicy.nazwisko, pracownicy.stanowisko FROM pracownicy
+	
+11. Wyświetlenie rezerwacji po zakładce wyszukaj rezerwacje. 
+	Select klienci.imie, klienci.nazwisko, rezerwacje.data_roz,rezerwacje.data_zak, pokoje.nazwa FROM klienci,rezerwacje,pokoje WHERE klienci.id_klienta=rezerwacje.id_klienta AND rezerwacje.id_rezerwacji=pokoje.id_rezerwacji
+	
+	
+Dodawanie do bazy danych
+
+1. Dodawanie klienta
+	INSERT INTO klienci(imie,nazwisko,miejscowosc,ulica,kod_pocztowy,telefon) VALUES ('"+imie+"','"+nazwisko+"','"+miejscowosc+"','"+ulica+"','"+kod_pocztowy+"','"+telefon+"');
+	
+2. Dodanie pracownika
+	INSERT INTO klienci(imie,nazwisko,miejscowosc,ulica,kod_pocztowy,telefon,stanowisko) VALUES ('"+imie+"','"+nazwisko+"','"+miejscowosc+"','"+ulica+"','"+kod_pocztowy+"','"+telefon+"','"stanowisko"');
+
+3. Dodanie rezerwacji
+	INSERT INTO (id_klienta, id_pracownika, data_roz,data_zak,status)
+		+ "VALUES((SELECT id_klienta FROM klienci WHERE imie='"+imie+"' AND nazwisko='"+nazwisko+"' AND miejscowosc='"+miejscowosc+"' AND ulica='"+ulica+"' AND kod_pocztowy='"+kod_pocztowy+"' AND telefon='"+telefon+"'),(SELECT id_pracownika FROM pracownicy WHERE imie='"+imie+"' AND nazwisko='"+nazwisko+"' AND miejscowosc='"+miejscowosc+"' AND ulica='"+ulica+"' AND kod_pocztowy='"+kod_pocztowy+"' AND telefon='"+telefon+"' AND stanowisko='"+stanowisko+"'),'"+data_roz+"','"+data_zak+"','"+status+"')";
+		
+		
